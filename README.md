@@ -29,7 +29,7 @@ Entity Relationship Diagram
 
 
 
-[Live Report Link](https://app.powerbi.com/groups/me/reports/461950aa-6e4a-4a16-a76f-838145ff8ac8/6069fd5166468130bd4a?experience=power-bi)
+[Entity Relationship Diagram](https://github.com/Sumitraadhya/SQL-Project--Danny-s-Dinner/blob/main/Entity%20relationship%20diagram.png)
 
 
 ## Case Study Questions
