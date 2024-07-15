@@ -29,11 +29,11 @@ Entity Relationship Diagram
 
 ## Codes for creating Input Data Table
 
-  CREATE TABLE sales (
-  "customer_id" VARCHAR(1),
-  "order_date" DATE,
-  "product_id" INTEGER
-);
+Select S.customer_id, Sum(M.price)
+From Menu m
+join Sales s
+On m.product_id = s.product_id
+group by S.customer_id
 
 
   CREATE TABLE sales (
