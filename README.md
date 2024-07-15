@@ -29,8 +29,7 @@ Entity Relationship Diagram
 ## Codes for creating Input Data Table
 ------------------------------
 
-## CREATING DATA SET
-CREATE TABLE sales (
+## CREATE TABLE sales (
   "customer_id" VARCHAR(1),
   "order_date" DATE,
   "product_id" INTEGER
