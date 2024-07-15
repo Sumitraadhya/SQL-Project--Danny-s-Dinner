@@ -10,6 +10,11 @@ Danny’s Diner is in need of your assistance to help the restaurant stay afloat
 
 Danny wants to use the data to answer a few simple questions about his customers, especially about their visiting patterns, how much money they’ve spent and also which menu items are their favourite. Having this deeper connection with his customers will help him deliver a better and more personalised experience for his loyal customers.
 
+Like: 
+  - visiting patterns,
+  - how much money they’ve spent, and
+  - which menu items are their favourite.
+
 He plans on using these insights to help him decide whether he should expand the existing customer loyalty program - additionally he needs help to generate some basic datasets so his team can easily inspect the data without needing to use SQL.
 
 Danny has provided you with a sample of his overall customer data due to privacy issues - but he hopes that these examples are enough for you to write fully functioning SQL queries to help him answer his questions!
@@ -27,110 +32,37 @@ Entity Relationship Diagram
 [Live Report Link](https://app.powerbi.com/groups/me/reports/461950aa-6e4a-4a16-a76f-838145ff8ac8/6069fd5166468130bd4a?experience=power-bi)
 
 
-## Codes for creating Input Data Table
+## Case Study Questions
 
-Select S.customer_id, Sum(M.price)
-From Menu m
-join Sales s
-On m.product_id = s.product_id
-group by S.customer_id
+Each of the following case study questions can be answered using a single SQL statement:
 
-
-  CREATE TABLE sales (
-  "customer_id" VARCHAR(1),
-  "order_date" DATE,
-  "product_id" INTEGER
-);
---------------------------------
-INSERT INTO sales
-  ("customer_id", "order_date", "product_id")
-VALUES
-  ('A', '2021-01-01', '1'),
-  ('A', '2021-01-01', '2'),
-  ('A', '2021-01-07', '2'),
-  ('A', '2021-01-10', '3'),
-  ('A', '2021-01-11', '3'),
-  ('A', '2021-01-11', '3'),
-  ('B', '2021-01-01', '2'),
-  ('B', '2021-01-02', '2'),
-  ('B', '2021-01-04', '1'),
-  ('B', '2021-01-11', '1'),
-  ('B', '2021-01-16', '3'),
-  ('B', '2021-02-01', '3'),
-  ('C', '2021-01-01', '3'),
-  ('C', '2021-01-01', '3'),
-  ('C', '2021-01-07', '3');
-------------------------
-CREATE TABLE menu (
-  "product_id" INTEGER,
-  "product_name" VARCHAR(5),
-  "price" INTEGER
-);
-------------------------
-INSERT INTO menu
-  ("product_id", "product_name", "price")
-VALUES
-  ('1', 'sushi', '10'),
-  ('2', 'curry', '15'),
-  ('3', 'ramen', '12');
-CREATE TABLE members (
-  "customer_id" VARCHAR(1),
-  "join_date" DATE
-);
------------------------
-INSERT INTO members
-  ("customer_id", "join_date")
-VALUES
-  ('A', '2021-01-07'),
-
-  ('B', '2021-01-09');
-
-Select *
-From members
-Select *
-From menu
-Select *
-From Sales
-
-------------------
+- What is the total amount each customer spent at the restaurant?
+- How many days has each customer visited the restaurant?
+- What was the first item from the menu purchased by each customer?
+- What is the most purchased item on the menu and how many times was it purchased by all customers?
+- Which item was the most popular for each customer?
+- Which item was purchased first by the customer after they became a member?
+- Which item was purchased just before the customer became a member?
+- What is the total items and amount spent for each member before they became a member?
+- If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+- In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B 
+  have at the end of January?
 
 
-## Case Study Questions & Answers(SQL Codes)
+## Insights
+
+From the analysis, we discover a few interesting insights that would be certainly useful for Danny.
+
+Customer B is the most frequent visitor with 6 visits in Jan 2021.
+Danny’s Diner’s most popular item is ramen, followed by curry and sushi.
+Customer A and C loves ramen whereas Customer B seems to enjoy sushi, curry and ramen equally. Who knows, I might be Customer B!
+Customer A is the 1st member of Danny’s Diner and his first order is curry. Gotta fulfill his curry cravings!
+The last item ordered by Customers A and B before they became members are sushi and curry. Does it mean both of these items are the deciding factor? It must be really delicious for them to sign up as members!
+Before they became members, both Customers A and B spent $25 and $40.
+Throughout Jan 2021, their points for Customer A: 860, Customer B: 940 and Customer C: 360.
+Assuming that members can earn 2x a week from the day they became a member with bonus 2x points for sushi, Customer A has 660 points and Customer B has 340 by the end of Jan 2021.
 
 
-
-
-
-
-## Overall Report
-
-![Overall Report.gif](https://github.com/Sumitraadhya/Atliq-Hospitality-Analysis/blob/main/Dashboard.png)
-
-
-## Business related terms
-
-https://github.com/Sumitraadhya/Atliq-Hospitality-Analysis/blob/main/metrics%20list.xlsx
-
-- Realization=URN/BRN
-- BRN=URN+ no shows+ cancellation bookings
-- Weekends=Friday & Saturday
-
-## Overall Analysis View
-
-![Overall Report.gif](https://github.com/Sumitraadhya/Atliq-Hospitality-Analysis/blob/main/Dashboard.png)
-
-
-
-you can find the full report file here : [Report](https://app.powerbi.com/groups/me/reports/461950aa-6e4a-4a16-a76f-838145ff8ac8/6069fd5166468130bd4a?experience=power-bi)
-
-
-## Project Outcome
-
--ADR is not fluctuating that clearly indicates this hotel runs on flat pricing.
-
--RevPar in weekday, weekend varying based on occupancy %, ADR is almost fixed here. That clearly indicates dynamic pricing (price can be variable depends on season, occasion and demand) adoption strategy especially for leisure hotels can be accounted.
-
--Management can adopt changes for dynamic pricing strategy which can bring furthermore business in the future.
 
 
 
