@@ -1,4 +1,4 @@
--- This is the solution for 1st case study of the challenge
+-- This is the Proble & Solution for Danny's dinner project challenge----
 -- CREATING DATA SET
 CREATE TABLE sales (
   "customer_id" VARCHAR(1),
@@ -52,6 +52,7 @@ VALUES
 
   ('B', '2021-01-09');
 
+  -----To view the table's data----- 
 Select *
 From members
 Select *
@@ -60,7 +61,7 @@ Select *
 From Sales
 
 -- SOLUTIONS
---1 Total amount spend by each customer
+--Q1. Total amount spent by each customer----
 SELECT 
    customer_id,  
    SUM(price) as total_spent
@@ -68,7 +69,7 @@ SELECT
   ON sales.product_id=menu.product_id
   GROUP BY customer_id;
 
---2 How manu dats customer visited the restauraunt
+--2 How many customer visited the restauraunt-----
 
 SELECT 
    customer_id,
@@ -76,7 +77,7 @@ SELECT
   FROM sales
   GROUP BY customer_id;
 
--- 3. What was the first item from the menu purchased by each customer?
+-- 3. What was the first item from the menu purchased by each customer?-----
 
 WITH CTE AS(
 SELECT customer_id, 
@@ -105,7 +106,7 @@ SELECT TOP 1
 	GROUP BY product_name
 	Order by COUNT(sales.product_id) DESC;
 
--- 5. Which item was the most popular for each customer?----
+---- 5. Which items were the most popular for each customer?----
 
 WITH CTE AS (
    SELECT customer_id,
@@ -127,7 +128,7 @@ WITH CTE AS (
 	   FROM CTE
 	    where ranking=1
 
--- 6. Which item was purchased first by the customer after they became a member?-----
+--- 6. Which item was purchased first by the customer after they became a member?-----
 
 WITH rank_table AS (
   SELECT sales.customer_id, 
@@ -144,7 +145,6 @@ WITH rank_table AS (
 	   where order_date>=join_date)
 	SELECT * FROM  rank_table 
 	  where ranking=1;
-
 
 -- 7. Which item was purchased just before the customer became a member?-----
 
@@ -167,8 +167,7 @@ WITH rank_table AS (
 	 FROM  rank_table 
 	 where ranking=1;	  
 
-
---- 8. What is the total items and amount spent for each member before they became a member?----
+--- 8. What is the total items and amount spent by each member before they became a member?----
 
 SELECT sales.customer_id, 
 	   COUNT(product_name) as total_items,
